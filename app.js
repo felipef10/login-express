@@ -13,12 +13,19 @@ const { obtenerusuarios, eliminarusuarios } = require('./usuarios');
 const saltRounds = 10;
 const myPlaintextPassword = 's0/\/\P4$$w0rD';
 app.use(express.json());
+
+
 app.use(session({
-    secret: 'kjhdjshkjsjha'
+    secret: process.env.SECRETSESSION || 'kjhdjshkjsjha',
+    proxy: process.env.NODE_ENV === 'production',
+cookie:{
+   secure: process.env.NODE_ENV === 'production',
+   sameSite: 'none'
+}
 }
 ))
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: process.env.URLFRONTEND || 'http://localhost:5173',
     credentials: true
 }))
 
