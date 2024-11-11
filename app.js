@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 // Get the client
 
 const cors = require('cors')
@@ -13,6 +13,8 @@ const { obtenerusuarios, eliminarusuarios } = require('./usuarios');
 const saltRounds = 10;
 const myPlaintextPassword = 's0/\/\P4$$w0rD';
 app.use(express.json());
+
+mysql://root:hjscctMoUgwZMQBORaCrtUawpUgbsybI@junction.proxy.rlwy.net:38366/railway
 
 
 app.use(session({
